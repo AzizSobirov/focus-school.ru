@@ -13,37 +13,48 @@ const { success = false, id = "form" } = Astro.props;
   {
     success ? (
       <>
-        <H3>Спасибо за Вашу заявку!</H3>
-        <div class="text-desc">
-          Наши менеджеры уже бьются за право позвонить Вам для уточнения
-          деталей, как только определится победитель - он Вам позвонит :)
+        <H2>Спасибо за Вашу заявку!</H2>
+        <div class="text-p">
+          Наши менеджеры перезвонят Вам для уточнения деталей!
         </div>
       </>
     ) : (
       <>
-        <H3>Проверьте объявление бесплатно</H3>
-        <div class="text-desc">
-          Получите бесплатный анализ объявления вместо того, что бы сразу
-          отдавать деньги возможным обманщикам
-        </div>
+        <H2>ЗАПИШИТЕСЬ НА ОБУЧЕНИЕ</H2>
+        <div class="text-p">И получите скидку в 10% на обучение.</div>
+
         <form id={id}>
-          <input
-            type="url"
-            name="link"
-            placeholder="Ссылка на объявление"
-            required
-          />
-          <input type="text" name="name" placeholder="Ваше имя" required />
+          <input type="text" name="link" placeholder="Ваше имя" required />
           <input
             type="text"
             name="phone"
-            placeholder="Номер телефона"
+            placeholder="Ваш номер телефона"
             required
           />
-          <button type="submit">Проверить объявление</button>
+          <button type="submit">
+            <span>ЗАПИСЬ НА ОБУЧЕНИЕ</span>
+
+            <div class="icon">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="20" cy="20" r="19.5" stroke="white" />
+                <path
+                  d="M26 15C26 14.7239 25.7761 14.5 25.5 14.5H21C20.7239 14.5 20.5 14.7239 20.5 15C20.5 15.2761 20.7239 15.5 21 15.5H25V19.5C25 19.7761 25.2239 20 25.5 20C25.7761 20 26 19.7761 26 19.5V15ZM15.3536 25.8536L25.8536 15.3536L25.1464 14.6464L14.6464 25.1464L15.3536 25.8536Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
         </form>
+
         <div class="text-xs">
-          Отправляя заявку я даю согласие на обработку персональных данных
+          Отправляя данную форму, Вы даете согласие <br />
+          на <span>обработку персональных данных</span>
         </div>
       </>
     )

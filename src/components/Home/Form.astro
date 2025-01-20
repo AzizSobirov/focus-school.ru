@@ -1,0 +1,47 @@
+---
+import TheForm from "@/components/TheForm.astro";
+import { Section, H2, Image, Icon } from "ui";
+---
+
+<!-- Application -->
+<Section name="application">
+  <div class="application__content">
+    <TheForm />
+
+    <div class="group">
+      <div class="text-sm">Или напишите нам в мессенджеры</div>
+      <div class="group-list">
+        <a
+          href="#"
+          class="contacts__item-link"
+          target="_blank"
+          title="Telegram"
+        >
+          <Icon src="telegram.svg" />
+          <span>Telegram</span>
+        </a>
+        <a
+          href="#"
+          class="contacts__item-link"
+          target="_blank"
+          title="Telegram"
+        >
+          <Icon src="telegram.svg" />
+          <span>Telegram</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="application__img">
+    <Image src="form.png" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .application {
+    position: relative;
+    padding: rem(50) 0;
+  }
+</style>

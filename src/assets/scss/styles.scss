@@ -20,3 +20,5 @@ section {
     padding: rem(35) 0;
   }
 }
+
+@include show(".application", true, true);
