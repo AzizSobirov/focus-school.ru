@@ -13,7 +13,8 @@
     "build": "astro build",
     "build-check": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "create": "node scripts/create.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

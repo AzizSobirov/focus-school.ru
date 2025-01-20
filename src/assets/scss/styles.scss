@@ -1,0 +1,22 @@
+@use "./helpers" as *;
+@use "./base";
+
+main {
+  padding-top: rem(120);
+
+  @include media("xl") {
+    padding-top: 0;
+  }
+}
+
+section {
+  padding: rem(50) 0;
+
+  &.pt-0 {
+    padding-top: 0;
+  }
+
+  @include media("sm") {
+    padding: rem(35) 0;
+  }
+}

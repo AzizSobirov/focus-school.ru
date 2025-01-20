@@ -1,13 +1,12 @@
 ---
-import App from "../App.astro";
-import { Section, Image, Icon, H1, H2, H3, H4} from "ui";
+import App from "@/App.astro";
+import { Section, Image, Icon, H1, H2, H3, H4 } from "ui";
+import { Hero } from "@/components/Home";
 ---
 
 <App title="Главная">
   <main>
-    <!-- Intro -->
-    <Section name="intro">
-      <H1>Hello world</H1>
-    </Section>
+    <!-- Hero -->
+    <Hero />
   </main>
 </App>

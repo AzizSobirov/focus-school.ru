@@ -1,14 +1,13 @@
 ---
-import TheFooter from "./components/TheFooter.astro";
-import TheModal from "./components/TheModal.astro";
-import TheHeader from "./components/TheHeader.astro";
-import "../public/assets/scss/app.scss";
+import "./assets/scss/styles.scss";
+import { Header, Footer, Modal } from "@/components/layout";
 
 const version = Math.random().toString(16).slice(10);
 
 const styles: string[] = [];
 const scripts: string[] = [
   // "./assets/js/fancybox.min.js",
+  "./assets/js/yandexmap.min.js",
   `./assets/js/app.js?v=${version}`,
 ];
 
@@ -32,16 +31,16 @@ const { title } = Astro.props;
   </head>
   <body>
     <slot name="header" />
-    <!-- The Header -->
-    <!-- <TheHeader /> -->
-    <!-- The Main -->
+    <!-- Header -->
+    <Header />
+    <!-- Main -->
     <slot />
     <!-- The Footer -->
-    <!-- <TheFooter /> -->
-    <!-- The Modal -->
-    <!-- <TheModal /> -->
+    <Footer />
+    <!-- Modal -->
+    <Modal />
     <slot name="footer" />
-    <!-- The Scripts -->
+    <!-- Scripts -->
     {scripts.map((script) => <script src={script} />)}
   </body>
 </html>

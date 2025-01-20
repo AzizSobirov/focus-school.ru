@@ -1,0 +1,141 @@
+---
+import App from "../App.astro";
+import { Section, H2, H3, H4, Image, Icon } from "ui";
+---
+
+<App title="Контакты">
+  <main>
+    <!-- Contacts -->
+    <Section name="contacts">
+      <H2>Контакты</H2>
+
+      <div class="wrapper">
+        <div class="contacts__content">
+          <H3>+ 7 (921) 111-32-71</H3>
+
+          <ul class="contacts__list">
+            <li class="contacts__item">
+              <a
+                href="#"
+                class="contacts__item-link"
+                target="_blank"
+                title="Telegram"
+              >
+                <Icon src="telegram.svg" />
+                <span>Telegram</span>
+              </a>
+            </li>
+            <li class="contacts__item">
+              <a
+                href="#"
+                class="contacts__item-link"
+                target="_blank"
+                title="WhatsApp"
+              >
+                <Icon src="whatsapp.svg" />
+                <span>WhatsApp</span>
+              </a>
+            </li>
+          </ul>
+
+          <a href="mailto:info@focus-school.ru" title="Mail">
+            info@focus-school.ru
+          </a>
+        </div>
+
+        <div id="yamap" class="contacts__map"></div>
+      </div>
+    </Section>
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .contacts {
+    padding-top: 50px;
+    width: 100%;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(30);
+    }
+
+    .wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(60);
+
+      @include media("lg") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(30);
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(30);
+
+      .text-h3 {
+        font-size: rem(26);
+        white-space: nowrap;
+
+        @include media("xl") {
+          font-size: rem(20);
+        }
+      }
+
+      a {
+        transition: var(--transition-ease);
+
+        &:hover {
+          color: var(--primary);
+        }
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(20);
+    }
+
+    &__item {
+      width: 100%;
+
+      &-link {
+        font-weight: 300;
+        text-decoration: underline;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(15);
+      }
+    }
+
+    &__map {
+      flex-grow: 1;
+      height: rem(385);
+      border-radius: rem(20);
+      overflow: hidden;
+
+      @include media("lg") {
+        width: 100%;
+      }
+      @include media("xs") {
+        margin-left: calc(var(--content-padding) * -1);
+        min-width: calc(100% + var(--content-padding) * 2);
+        border-radius: 0;
+      }
+    }
+  }
+</style>

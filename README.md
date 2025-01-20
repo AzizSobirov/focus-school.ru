@@ -1,4 +1,4 @@
-# Astro Starter Kit by Aziz Sobirov
+# Aziz Sobirov's Starter Kit
 
 ```sh
 npm create astro@latest -- --template minimal

@@ -1,0 +1,50 @@
+@use "../helpers" as *;
+
+@include font-face("Unbounded", 400);
+@include font-face("Unbounded", 600);
+@include font-face("Unbounded", 700);
+@include font-face("Inter", 300);
+@include font-face("Inter", 400);
+
+:root {
+  --primary: #46b8ce;
+  --secondary: #fd643f;
+  --text-color: #353535;
+  --gray: #888;
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Unbounded", sans-serif;
+  --transition-ease: 0.3s ease;
+  --transition-bezier: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --content-width: 1240px;
+  --content-padding: 20px;
+}
+
+@include media("xl") {
+  :root {
+    --content-width: 1024px;
+  }
+}
+@include media("lg") {
+  :root {
+    --content-width: 768px;
+  }
+}
+@include media("md") {
+  :root {
+    --content-width: 640px;
+  }
+}
+@include media("sm") {
+  :root {
+    --content-width: 475px;
+    --content-padding: 16px;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+  width: 100%;
+  max-width: calc(var(--content-width) + var(--content-padding) * 2);
+}
