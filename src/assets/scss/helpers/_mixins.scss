@@ -1,15 +1,6 @@
+@use "./variables" as *;
 @use "./functions" as *;
 
-$breakpoints: (
-  "3xl": rem(1680),
-  "2xl": rem(1440),
-  "xl": rem(1279),
-  "lg": rem(1024),
-  "md": rem(768),
-  "sm": rem(640),
-  "xs": rem(475),
-  "xxs": rem(355),
-);
 
 @mixin media($breakpoint, $param: max-width) {
   @if map-get($breakpoints, $breakpoint) {

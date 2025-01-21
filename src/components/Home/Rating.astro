@@ -1,0 +1,112 @@
+---
+import { Section, H1, H2, H3, H4, Image, Icon } from "ui";
+---
+
+<Section name="rating">
+  <H2>наш рейтинг на площадках </H2>
+
+  <div class="rating__content">
+    <div class="rating__list">
+      <a href="#" target="_blank" class="rating__list-item">
+        <Image src="logos/yandex.png" />
+        <span>5/5</span>
+      </a>
+      <a href="#" target="_blank" class="rating__list-item">
+        <Image src="logos/google.png" />
+        <span>4.6/5</span>
+      </a>
+      <a href="#" target="_blank" class="rating__list-item">
+        <Image src="logos/2gis.png" />
+        <span>4.9/5</span>
+      </a>
+      <a href="#" target="_blank" class="rating__list-item">
+        <Image src="logos/zoon.svg" />
+        <span>4.9/5</span>
+      </a>
+    </div>
+
+    <p class="text-p">Спасибо что оставляете Ваши отзывы о нас на площадках!</p>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .rating {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__content {
+      width: 100%;
+      text-wrap: balance;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(20);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: rem(24);
+
+      @include media("2xl") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+
+      &-item {
+        padding: rem(14) rem(20) rem(14) rem(14);
+        background: #fff;
+        border-radius: rem(15);
+        box-shadow: 6px 4px 10px 0 rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(20);
+      }
+
+      img {
+        height: rem(50);
+        width: auto;
+        max-width: rem(125);
+        object-fit: contain;
+        object-position: center;
+
+        @include media("xs") {
+          height: rem(40);
+        }
+      }
+
+      span {
+        height: 100%;
+        width: rem(80);
+        color: #fff;
+        text-align: center;
+        background: var(--primary);
+        border-radius: rem(15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+</style>

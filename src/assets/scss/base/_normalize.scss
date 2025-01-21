@@ -13,7 +13,7 @@ body {
   font-family: var(--font-primary, sans-serif);
   line-height: inherit;
 
-  &.overflow-hidden {
+  &.is-lock {
     overflow: hidden;
   }
 }
@@ -37,7 +37,7 @@ a {
 }
 b,
 strong {
-  font-weight: bolder;
+  font-weight: bold;
 }
 code,
 kbd,

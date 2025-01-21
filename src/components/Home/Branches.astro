@@ -1,0 +1,104 @@
+---
+import { Section, H2, Image, Icon } from "ui";
+---
+
+<!-- Branches -->
+<Section name="branches">
+  <H2>НАШИ ФИЛИАЛЫ</H2>
+
+  <div class="branches__map">
+    <div id="yamap"></div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .branches {
+    position: relative;
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-70%, 3%);
+        width: rem(800);
+        height: rem(1080);
+        background: url("/assets/img/arrow.png") center/contain no-repeat;
+        pointer-events: none;
+        z-index: 2;
+
+        @include media("xl") {
+          width: rem(600);
+          height: rem(900);
+        }
+        @include media("xs") {
+          display: none;
+        }
+      }
+    }
+
+    &__map {
+      position: relative;
+      width: 100%;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: rem(50);
+        height: rem(50);
+        background: url("/assets/img/icons/cone.svg") center/contain no-repeat;
+        box-shadow: -4px 6px 13px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        pointer-events: none;
+
+        @include media("xs") {
+          display: none;
+        }
+      }
+
+      &::before {
+        transform: translate(50%, -50%);
+      }
+
+      &::after {
+        top: auto;
+        bottom: 0;
+        transform: translate(50%, 50%);
+      }
+    }
+
+    #yamap {
+      position: relative;
+      width: 100%;
+      height: rem(385);
+      border-radius: rem(20);
+      overflow: hidden;
+
+      @include media("sm") {
+        height: rem(300);
+      }
+      @include media("xs") {
+        margin-left: calc(var(--content-padding) * -1);
+        width: calc(100% + var(--content-padding) * 2);
+        border-radius: 0;
+      }
+    }
+  }
+</style>

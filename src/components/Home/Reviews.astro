@@ -1,0 +1,181 @@
+---
+import { Section, H2, H3, Image, Icon } from "ui";
+---
+
+<!-- Reviews -->
+<Section name="reviews">
+  <H2>ОТЗЫВЫ НАШИХ УЧЕНИКОВ</H2>
+
+  <div class="reviews__swiper">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 5 }).map((_, index) => (
+            <div
+              class="swiper-slide"
+              data-fancybox="reviews"
+              data-src="/assets/videos/video.mp4"
+            >
+              <div class="bg-img">
+                <Image src="poster-2.png" />
+              </div>
+
+              <div class="play">
+                <Icon src="play.svg" />
+                <p class="text-p"> Смотреть видео-отзыв</p>
+              </div>
+
+              <div class="group">
+                <H3>АНАТОЛИЙ</H3>
+                <p class="text-p">
+                  Спасибо Автошколе Focus за обучение, сдал экзамен в ГИБДД с
+                  первого раза. Отдельное спасибо...
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="reviews__swiper-nav">
+      <div class="swiper-btn btn-prev"></div>
+      <div class="swiper-btn btn-next"></div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .reviews {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__swiper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      .swiper {
+        width: 100%;
+        height: rem(540);
+
+        @include media("xl") {
+          height: rem(450);
+        }
+        @include media("lg") {
+          overflow: visible;
+        }
+        @include media("sm") {
+          height: rem(400);
+        }
+      }
+
+      .swiper-slide {
+        position: relative;
+        padding: rem(20) rem(30);
+        width: 100%;
+        color: #fff;
+        border-radius: rem(20);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        @include media("lg") {
+          width: rem(320);
+        }
+        @include media("sm") {
+          padding: rem(20);
+        }
+      }
+
+      .bg-img {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba($color: #353535, $alpha: 0.8);
+        }
+      }
+
+      .play {
+        position: absolute;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(10);
+        --icon-size: #{rem(52)};
+      }
+
+      .group {
+        margin-top: auto;
+        gap: rem(16);
+
+        @include media("xs") {
+          gap: rem(12);
+        }
+      }
+
+      .text-h3 {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      &-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(40);
+
+        @include media("sm") {
+          width: 100%;
+          justify-content: center;
+          gap: rem(25);
+        }
+
+        .swiper-btn {
+          width: rem(40);
+          height: rem(40);
+
+          &.swiper-button-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+        }
+
+        .btn-prev {
+          background: url("/assets/img/icons/arrow-left.svg") center/contain
+            no-repeat;
+        }
+
+        .btn-next {
+          background: url("/assets/img/icons/arrow-right.svg") center/contain
+            no-repeat;
+        }
+      }
+    }
+  }
+</style>

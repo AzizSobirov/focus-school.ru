@@ -2,8 +2,7 @@
 
 .text-h1,
 .text-h2,
-.text-h3,
-.text-h4 {
+.text-h3 {
   font-weight: 400;
   font-family: var(--font-secondary);
 }
@@ -16,6 +15,9 @@
   }
   @include media(sm) {
     font-size: rem(32);
+  }
+  @include media(xs) {
+    font-size: rem(28);
   }
 }
 
@@ -31,6 +33,9 @@
   @include media(sm) {
     font-size: rem(28);
   }
+  @include media(xs) {
+    font-size: rem(24);
+  }
 }
 
 .text-h3 {
@@ -43,7 +48,10 @@
 }
 
 .text-h4 {
+  color: var(--primary);
   font-size: rem(20);
+  font-weight: 700;
+  text-transform: uppercase;
 
   @include media(sm) {
     font-size: rem(18);

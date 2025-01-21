@@ -1,8 +1,14 @@
 @use "./helpers" as *;
 @use "./base";
 
+#app {
+  width: 100%;
+  overflow: hidden;
+}
+
 main {
   padding-top: rem(120);
+  width: 100%;
 
   @include media("xl") {
     padding-top: 0;
@@ -21,4 +27,4 @@ section {
   }
 }
 
-@include show(".application", true, true);
+// @include show(".advantages", true, true);

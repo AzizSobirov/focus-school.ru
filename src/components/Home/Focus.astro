@@ -1,0 +1,158 @@
+---
+import { Section, H1, H2, H3, H4, Image, Icon } from "ui";
+---
+
+<!-- Focus -->
+<Section name="focus">
+  <H2>ЧТО В ТВОЕМ ФОКУСЕ?</H2>
+
+  <div class="text-desc">
+    ОСВАИВАЙТЕ НАВЫКИ БЕЗОПАСНОГО ВОЖДЕНИЯ С АВТОШКОЛОЙ НОВОГО ПОКОЛЕНИЯ <span
+      class="underline">FOCUS</span
+    > И ЧУВСТВУЙТЕ СЕБЯ УВЕРЕННО ЗА РУЛЕМ!
+  </div>
+
+  <div class="focus__img">
+    <Image src="u.png" />
+  </div>
+
+  <div class="focus__line">
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+
+    <svg
+      width="612"
+      height="10"
+      viewBox="0 0 612 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M611.5 5.00024L-1.18121e-10 5.00292"
+        stroke="#EDEDED"
+        stroke-width="9"
+        stroke-dasharray="20 20"></path>
+    </svg>
+  </div>
+
+  <ul class="focus__list">
+    <li class="focus__item">
+      <H4>ДЛЯ ТЕХ КТО</H4>
+      <p class="text-p">ценит время и хочет быть уверенным в результате.</p>
+    </li>
+    <li class="focus__item">
+      <H4>ДЛЯ КОГО</H4>
+      <p class="text-p">
+        в приоритете не только цена обучения, но и качество знаний и получение
+        эффективных навыков вождения.
+      </p>
+    </li>
+    <li class="focus__item">
+      <H4>ДЛЯ ТЕХ КОМУ</H4>
+      <p class="text-p">
+        важен гибкий график занятий, оперативная работа сервиса, поддержка 24/7
+        на пути обучения, сопровождение в получении водительского удостоверения.
+      </p>
+    </li>
+  </ul>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .focus {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    .text-desc {
+      width: 100%;
+      max-width: rem(830);
+      font-size: rem(20);
+      font-weight: 700;
+
+      @include media("sm") {
+        font-size: rem(16);
+      }
+    }
+
+    &__line {
+      position: relative;
+      margin-top: rem(20);
+      width: 100%;
+      max-width: rem(610);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(10);
+      --icon-size: #{rem(50)};
+
+      @include media("lg") {
+        display: none;
+      }
+
+      svg {
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+      }
+
+      @include media("1025px", min-width) {
+        .icon:first-child {
+          transform: translateX(-100%);
+        }
+
+        .icon:nth-child(3) {
+          transform: translateX(100%);
+        }
+      }
+    }
+
+    &__list {
+      position: relative;
+      width: 100%;
+      max-width: rem(925);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(50);
+
+      @include media("lg") {
+        grid-template-columns: 1fr;
+        gap: rem(30);
+      }
+    }
+
+    &__item {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(24);
+
+      @include media("lg") {
+        gap: rem(12);
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(calc(-50% + rem(620)), -50%);
+
+      @include media("lg") {
+        display: none;
+      }
+    }
+  }
+</style>

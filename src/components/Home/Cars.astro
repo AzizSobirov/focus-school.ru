@@ -1,0 +1,215 @@
+---
+import { Section, H2, Image, Icon } from "ui";
+---
+
+<!-- Cars -->
+<Section name="cars">
+  <H2>АВТОМОБИЛИ</H2>
+
+  <p class="text-p">
+    В автошколе "Focus" обучение проходит на современных и комфортных
+    автомобилях, идеально подходящих для начинающих водителей. Наш автопарк
+    включает машины с автоматической и механической коробкой передач, оснащённые
+    современными системами безопасности и комфорта, такими как климат-контроль,
+    ассистенты парковки и камеры заднего вида. Каждый автомобиль регулярно
+    проходит техническое обслуживание, обеспечивая безопасность и надёжность на
+    каждом занятии. Удобство и инновационные технологии помогут вам быстрее
+    освоить навыки вождения и уверенно чувствовать себя за рулём в любых
+    условиях.
+  </p>
+
+  <div class="cars__swiper">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 5 }).map((_, index) => (
+            <div class="swiper-slide group">
+              <div class="group-title">
+                Ford Focus 2024
+                <span>АКПП</span>
+              </div>
+
+              <Image src="cars/1.png" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="cars__swiper-nav">
+      <div class="swiper-btn btn-prev"></div>
+      <div class="swiper-btn btn-next"></div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .cars {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__swiper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      .swiper {
+        height: rem(300);
+        width: 100%;
+        overflow: visible;
+
+        @include media("sm") {
+          height: rem(240);
+        }
+      }
+
+      .swiper-slide {
+        height: 100%;
+        filter: blur(2px);
+        transition: filter 0.3s ease;
+        pointer-events: none;
+
+        &-next {
+          img {
+            transform: scale(1.2) translateX(15%) !important;
+
+            @include media("lg") {
+              transform: scale(1.2) translateX(10%) !important;
+            }
+          }
+        }
+
+        &-active {
+          filter: blur(0);
+
+          img {
+            transform: scale(1.5) !important;
+          }
+
+          .group-title {
+            opacity: 1;
+          }
+        }
+
+        &.visibility-hidden {
+          visibility: hidden;
+        }
+
+        @include media("sm") {
+          width: 100% !important;
+
+          img {
+            transform: scale(1.15) !important;
+          }
+        }
+      }
+
+      .group {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-title {
+          position: absolute;
+          top: 0;
+          z-index: 2;
+          color: var(--primary);
+          font-size: rem(25);
+          font-weight: 700;
+          font-family: var(--font-secondary);
+          opacity: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: rem(15);
+
+          @include media("sm") {
+            font-size: rem(20);
+            gap: rem(12);
+          }
+
+          span {
+            padding: rem(5) rem(12);
+            color: #fff;
+            font-size: rem(16);
+            text-transform: uppercase;
+            background: var(--primary);
+            border-radius: rem(5);
+
+            @include media("sm") {
+              font-size: rem(14);
+            }
+          }
+        }
+
+        img {
+          margin-top: 60px;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transform: scale(0.9) translateX(15%);
+          transition: var(--transition-ease);
+
+          @include media("lg") {
+            margin-top: 40px;
+            transform: scale(0.9) translateX(0%);
+          }
+        }
+      }
+
+      &-nav {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(40);
+
+        @include media("lg") {
+          width: 100%;
+          justify-content: center;
+          gap: rem(25);
+        }
+
+        .swiper-btn {
+          width: rem(40);
+          height: rem(40);
+
+          &.swiper-button-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+        }
+
+        .btn-prev {
+          background: url("/assets/img/icons/arrow-left.svg") center/contain
+            no-repeat;
+        }
+
+        .btn-next {
+          background: url("/assets/img/icons/arrow-right.svg") center/contain
+            no-repeat;
+        }
+      }
+    }
+  }
+</style>

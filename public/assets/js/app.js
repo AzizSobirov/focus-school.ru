@@ -125,6 +125,22 @@ if (header) {
   });
 }
 
+// school
+const school = document.querySelector(".school");
+if (school) {
+  const video = school.querySelector("video");
+  const play = school.querySelector(".school__video-play");
+  const playBtn = play.querySelector(".icon");
+
+  playBtn.addEventListener("click", () => {
+    play.style.display = "none";
+    video.muted = false;
+    video.currentTime = 0;
+    video.controls = true;
+    video.play();
+  });
+}
+
 // Map
 const map = document.querySelector("#yamap");
 if (map) {
@@ -198,3 +214,79 @@ if (map) {
     myMap.controls.add(zoomControl);
   });
 }
+
+// Initialize the fancybox
+const fancyboxTriggers = Array.from(
+  document.querySelectorAll("[data-fancybox]")
+).filter((trigger) => trigger.dataset.fancybox);
+if (fancyboxTriggers) {
+  const fancyboxInstances = [];
+  fancyboxTriggers.forEach((trigger) => {
+    const name = trigger.dataset.fancybox;
+    if (fancyboxInstances.includes(name)) {
+      return; // Skip if already bound
+    }
+    // Add the name to the `fancyboxInstances` list
+    fancyboxInstances.push(name);
+  });
+  fancyboxInstances.forEach((name) => {
+    Fancybox.bind(`[data-fancybox="${name}"]`, {
+      Images: { Panzoom: { maxScale: 3 } },
+    });
+  });
+}
+
+// reviews swiper
+let reviewsSwiper = new Swiper(".reviews__swiper .swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  navigation: {
+    nextEl: ".reviews__swiper .btn-next",
+    prevEl: ".reviews__swiper .btn-prev",
+  },
+  breakpoints: {
+    1025: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+  },
+});
+
+// cars swiper
+let carsSwiper = new Swiper(".cars__swiper .swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  navigation: {
+    nextEl: ".cars__swiper .btn-next",
+    prevEl: ".cars__swiper .btn-prev",
+  },
+  breakpoints: {
+    641: {
+      slidesPerView: 2,
+      spaceBetween: 15,
+      slidesOffsetAfter: 370,
+    },
+    1025: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+      slidesOffsetAfter: 840,
+    },
+  },
+  on: {
+    slideChange: function () {
+      if (window.innerWidth > 1024) {
+        const activeIndex = carsSwiper.activeIndex;
+
+        carsSwiper.slides.forEach((slide, index) => {
+          if (index < activeIndex) {
+            // Hide slides before active slide
+            slide.classList.add("visibility-hidden");
+          } else {
+            // Show current and next slides
+            slide.classList.remove("visibility-hidden");
+          }
+        });
+      }
+    },
+  },
+});

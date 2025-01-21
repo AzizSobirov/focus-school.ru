@@ -1,0 +1,87 @@
+---
+import { Section, H2, Image, Icon } from "ui";
+---
+
+<!-- School -->
+<Section name="school">
+  <Fragment slot="header">
+    <div class="school__video">
+      <video autoplay loop muted poster="/assets/img/poster.png">
+        <source src="/assets/videos/video.mp4" />
+      </video>
+
+      <div class="school__video-play">
+        <Icon src="play.svg" role="button" aria-label="Смотреть видео" />
+        <H2>О СЕТИ АВТОШКОЛ FOCUS</H2>
+      </div>
+    </div>
+  </Fragment>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .school {
+    position: relative;
+
+    @include media("sm") {
+      padding: rem(10) 0;
+    }
+
+    &__video {
+      position: relative;
+      height: rem(630);
+      width: 100%;
+
+      @include media("lg") {
+        height: rem(480);
+      }
+      @include media("sm") {
+        height: rem(280);
+      }
+      @include media("xs") {
+        height: rem(240);
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &-play {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #363636, $alpha: 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: rem(45);
+        --icon-size: #{rem(124)};
+
+        @include media("lg") {
+          --icon-size: #{rem(100)};
+        }
+        @include media("sm") {
+          gap: rem(25);
+          --icon-size: #{rem(80)};
+        }
+      }
+
+      .text-h2 {
+        color: #fff;
+
+        @include media("sm") {
+          font-size: rem(20);
+        }
+        @include media("xs") {
+          font-size: rem(16);
+        }
+      }
+    }
+  }
+</style>
