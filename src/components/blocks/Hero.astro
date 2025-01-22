@@ -3,12 +3,418 @@ import { Section, H2, Image, Icon } from "ui";
 ---
 
 <!-- Hero -->
-<Section name="hero pt-0"> .hero </Section>
+<Section name="hero pt-0">
+  <div class="wrapper">
+    <div class="hero__left">
+      <div class="hero__circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+
+      <div class="hero__text">
+        <div class="hero__text-title">
+          АВТО- <br /> ШКОЛА
+        </div>
+        <p class="hero__text-desc">НОВОГО ПОКОЛЕНИЯ</p>
+      </div>
+
+      <Image class="hero__img" src="hero.png" />
+    </div>
+
+    <div class="hero__right">
+      <ul class="hero__list">
+        <li class="hero__item">
+          <Icon src="marker.svg" />
+          <span>
+            <span class="underline">2 филиала</span>
+            <br />
+            в Санкт-Петербурге
+          </span>
+        </li>
+        <li class="hero__item">
+          <Icon src="student.svg" />
+          <span>
+            Удобно совмещать <br />
+            с работой или учебой
+          </span>
+        </li>
+        <li class="hero__item">
+          <Icon src="save-money.svg" />
+          <span>
+            Беспроцентная рассрочка <br /> на весь период обучения
+          </span>
+        </li>
+        <li class="hero__item">
+          <Icon src="male-student.svg" />
+          <span>
+            Очная либо гибридная форма обучения! Учись on-line, вебинары с
+            преподавателем
+          </span>
+        </li>
+      </ul>
+
+      <div
+        class="btn"
+        role="button"
+        aria-label="Записаться"
+        tabindex="0"
+        data-modal="form"
+      >
+        <span>ЗАПИСЬ НА ОБУЧЕНИЕ</span>
+        <Icon src="arrow-up-right.svg" />
+      </div>
+    </div>
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .hero {
     position: relative;
+    box-shadow: 0 4px 105px 0 rgba(0, 0, 0, 0.06);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(-100%);
+      width: 100%;
+      height: 120px;
+      background: #fff;
+      pointer-events: none;
+    }
+
+    .wrapper {
+      padding-bottom: 50px;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: rem(120);
+
+      @include media("lg") {
+        padding-bottom: 0;
+        flex-direction: column;
+        gap: rem(250);
+      }
+      @include media("sm") {
+        padding-top: rem(20);
+      }
+    }
+
+    &__left {
+      position: relative;
+      padding: rem(85);
+      height: 100%;
+      flex-grow: 1;
+
+      @include media("lg") {
+        padding: rem(40);
+        height: rem(400);
+        width: 100%;
+      }
+      @include media("md") {
+        height: auto;
+      }
+      @include media("sm") {
+        padding: 0;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        width: rem(50);
+        height: rem(50);
+        background: url("/assets/img/icons/cone.svg") center/contain no-repeat;
+        box-shadow: -4px 6px 13px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(2);
+        animation: fall 2s ease-out forwards;
+
+        @include media("xs") {
+          width: rem(35);
+          height: rem(35);
+        }
+      }
+
+      // cone 1
+      &::before {
+        right: 0;
+        transform: translate(0%, rem(100));
+        animation-delay: 2.8s;
+      }
+
+      // cone 2
+      &::after {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        transform: translate(0%, rem(150));
+        animation-delay: 3s;
+
+        @include media("xs") {
+          left: 10%;
+          bottom: -200px;
+        }
+      }
+
+      @keyframes fall {
+        0% {
+          opacity: 0;
+          transform: scale(2) translateY(-200%);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+    }
+
+    &__circles {
+      position: absolute;
+      top: 80%;
+      left: 45%;
+      transform: translate(-50%, -50%);
+      width: rem(720);
+      height: rem(720);
+      box-sizing: content-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; // Initially hidden
+      animation: fadeInScale 1.5s ease-in-out forwards;
+      animation-delay: 2.8s; // Delay to start after carMove animation
+
+      @include media("lg") {
+        left: 45%;
+        width: rem(620);
+        height: rem(620);
+      }
+      @include media("md") {
+        top: 100%;
+      }
+      @include media("sm") {
+        top: 130%;
+        left: auto;
+        right: -80%;
+        width: rem(390);
+        height: rem(390);
+      }
+      @include media("xs") {
+        top: 120%;
+        right: -60%;
+        width: rem(360);
+        height: rem(360);
+      }
+
+      .circle {
+        @include center;
+        border-radius: 50%;
+      }
+
+      .circle:nth-child(1) {
+        width: 100%;
+        height: 100%;
+        background: #ebebeb;
+        border: rem(34) solid #f4f4f4;
+
+        @include media("sm") {
+          border-width: rem(30);
+        }
+      }
+
+      .circle:nth-child(2) {
+        width: rem(455);
+        height: rem(455);
+        background: linear-gradient(to bottom, #ffe100, #ff8000 60%);
+
+        @include media("sm") {
+          width: rem(245);
+          height: rem(245);
+        }
+        @include media("xs") {
+          width: rem(220);
+          height: rem(220);
+        }
+
+        &::before {
+          content: "";
+          @include center;
+          width: calc(100% - 78px * 2);
+          height: calc(100% - 78px * 2);
+          background: #ebebeb;
+          border-radius: 50%;
+
+          @include media("sm") {
+            width: calc(100% - 45px * 2);
+            height: calc(100% - 45px * 2);
+          }
+          @include media("xs") {
+            width: calc(100% - 40px * 2);
+            height: calc(100% - 40px * 2);
+          }
+        }
+      }
+
+      // Keyframes for fade-in and scaling
+      @keyframes fadeInScale {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 23%;
+      left: 23%;
+      pointer-events: none;
+      animation: carMove 3s ease-in-out;
+
+      @include media("xl") {
+        top: 45%;
+        left: 14%;
+      }
+      @include media("lg") {
+        top: 30%;
+        left: auto;
+        right: 0;
+        min-width: rem(620);
+      }
+      @include media("md") {
+        top: 35%;
+        min-width: rem(520);
+        width: rem(520);
+      }
+      @include media("sm") {
+        top: 65%;
+        right: -5%;
+        min-width: rem(320);
+        width: rem(320);
+      }
+
+      @keyframes carMove {
+        0% {
+          transform: translateX(-200%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+    }
+
+    &__text {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      &-title {
+        font-size: rem(72);
+        font-weight: 700;
+        font-family: var(--font-secondary);
+        text-transform: uppercase;
+
+        @include media("md") {
+          font-size: rem(55);
+        }
+      }
+
+      &-desc {
+        font-size: rem(17);
+        font-family: var(--font-secondary);
+        text-transform: uppercase;
+
+        @include media("md") {
+          font-size: rem(16);
+        }
+      }
+    }
+
+    &__right {
+      position: relative;
+      width: 100%;
+      max-width: rem(310);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(30);
+
+      @include media("lg") {
+        max-width: 100%;
+      }
+
+      .btn {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(20);
+
+        span {
+          font-size: 1rem;
+          font-weight: 300;
+        }
+
+        .icon {
+          transition: var(--transition-ease);
+          --icon-size: #{rem(40)};
+        }
+
+        &:hover {
+          .icon {
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(20);
+
+      @include media("lg") {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    &__item {
+      padding: rem(20) rem(15);
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(25);
+      --icon-size: #{rem(50)};
+
+      @include media("lg") {
+        flex: 1 0 rem(280);
+      }
+      @include media("sm") {
+        flex-basis: 100%;
+        padding: rem(10);
+      }
+
+      .underline {
+        text-decoration: none;
+        border-bottom: 1px dashed var(--text-color);
+      }
+    }
   }
 </style>

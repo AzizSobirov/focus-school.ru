@@ -12,7 +12,17 @@ const { title, list, isMain } = Astro.props;
 
 <!-- Tariffs -->
 <Section name="tariffs">
-  <H2>{title}</H2>
+  <div class="tariffs__header">
+    <H2>{title}</H2>
+    {
+      isMain && (
+        <div class="tariffs__switch">
+          <div class="tariffs__switch-item active">МКПП</div>
+          <div class="tariffs__switch-item">АКПП</div>
+        </div>
+      )
+    }
+  </div>
 
   {
     !isMain ? (
@@ -59,7 +69,115 @@ const { title, list, isMain } = Astro.props;
         ))}
       </div>
     ) : (
-      <h2>tariflar</h2>
+      <>
+        <div class="tariffs__swiper" data-type="МКПП">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {list.map((item) => (
+                <div class="swiper-slide">
+                  <div class="card">
+                    <div class="bg-img">
+                      <Image src="discount.png" />
+                    </div>
+
+                    {item.highlight && <div class="card__highlight">ХИТ</div>}
+
+                    <div class="text-p">ТАРИФ</div>
+
+                    <H2>{item.name}</H2>
+
+                    <p class="text-p" set:html={item.description} />
+
+                    {item.additional.length ? (
+                      <div class="card__list">
+                        <div class="card__list-title">ДОПОЛНИТЕЛЬНО</div>
+                        <ul>
+                          {item.additional.map((li: string) => (
+                            <li>{li}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <div class="card__list">
+                        <div class="card__list-title">ВХОДИТ</div>
+                        <ul>
+                          {item.includes.map((li: string) => (
+                            <li>{li}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div class="card__price">
+                      <div class="card__price-old">{item.old_price}</div>
+                      <div class="card__price-new">{item.new_price}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="tariffs__swiper-nav">
+            <div class="swiper-btn btn-prev" />
+            <div class="swiper-btn btn-next" />
+          </div>
+        </div>
+
+        <div class="tariffs__swiper" data-type="АКПП">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {list.map((item) => (
+                <div class="swiper-slide">
+                  <div class="card">
+                    <div class="bg-img">
+                      <Image src="discount.png" />
+                    </div>
+
+                    {item.highlight && <div class="card__highlight">ХИТ</div>}
+
+                    <div class="text-p">ТАРИФ</div>
+
+                    <H2>{item.name}</H2>
+
+                    <p class="text-p" set:html={item.description} />
+
+                    {item.additional.length ? (
+                      <div class="card__list">
+                        <div class="card__list-title">ДОПОЛНИТЕЛЬНО</div>
+                        <ul>
+                          {item.additional.map((li: string) => (
+                            <li>{li}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <div class="card__list">
+                        <div class="card__list-title">ВХОДИТ</div>
+                        <ul>
+                          {item.includes.map((li: string) => (
+                            <li>{li}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div class="card__price">
+                      <div class="card__price-old">{item.old_price}</div>
+                      <div class="card__price-new">{item.new_price}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="tariffs__swiper-nav">
+            <div class="swiper-btn btn-prev" />
+            <div class="swiper-btn btn-next" />
+          </div>
+        </div>
+      </>
     )
   }
 </Section>
@@ -78,6 +196,58 @@ const { title, list, isMain } = Astro.props;
 
       @include media("sm") {
         gap: rem(30);
+      }
+    }
+
+    &__header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(15) rem(60);
+
+      @include media("sm") {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    &__switch {
+      padding: rem(5);
+      border: rem(2) solid var(--primary);
+      border-radius: rem(20);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: rem(5);
+
+      @include media("sm") {
+        padding: rem(4);
+        border-width: rem(1);
+        border-radius: rem(16);
+        gap: rem(3);
+      }
+
+      &-item {
+        padding: rem(8) rem(18);
+        color: var(--primary);
+        font-size: 1rem;
+        border-radius: rem(15);
+        transition: var(--transition-ease);
+        cursor: pointer;
+
+        @include media("sm") {
+          padding: rem(6) rem(15);
+          font-size: rem(14);
+          border-radius: rem(12);
+        }
+
+        &.active,
+        &:hover {
+          color: #fff;
+          font-weight: 600;
+          background: var(--primary);
+        }
       }
     }
 
@@ -199,6 +369,7 @@ const { title, list, isMain } = Astro.props;
         margin-left: -#{rem(30)};
         padding: rem(10) rem(40);
         font-family: var(--font-secondary);
+        white-space: nowrap;
         background: #fff;
         border-radius: 0 999px 999px 0;
         display: flex;
@@ -248,6 +419,109 @@ const { title, list, isMain } = Astro.props;
           @include media("md") {
             font-size: rem(20);
           }
+        }
+      }
+    }
+
+    &__swiper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      &:last-child {
+        display: none;
+      }
+
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      .swiper {
+        height: rem(460);
+        width: 100%;
+        overflow: visible;
+
+        @include media("lg") {
+          height: rem(400);
+        }
+        @include media("xxs") {
+          height: rem(440);
+        }
+      }
+
+      .swiper-slide {
+        height: 100%;
+        opacity: 0.6;
+
+        @include media("sm") {
+          max-width: rem(320);
+        }
+        @include media("375px") {
+          max-width: rem(300);
+        }
+
+        &-active,
+        &-next {
+          opacity: 1;
+        }
+
+        &.visibility-hidden {
+          visibility: hidden;
+        }
+
+        .card {
+          height: 100%;
+
+          &:nth-child(1) {
+            --primary: #43b6cd;
+
+            .bg-img::before {
+              background: linear-gradient(180deg, #1ba8c5 0%, #43b6cd 100%);
+            }
+          }
+        }
+
+        &:first-child .card {
+          --primary: #fd643f;
+
+          .bg-img::before {
+            background: linear-gradient(180deg, #fd643f 0%, #fdae86 100%);
+          }
+        }
+      }
+
+      &-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(40);
+
+        @include media("sm") {
+          width: 100%;
+          justify-content: center;
+          gap: rem(25);
+        }
+
+        .swiper-btn {
+          width: rem(40);
+          height: rem(40);
+
+          &.swiper-button-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+        }
+
+        .btn-prev {
+          background: url("/assets/img/icons/arrow-left.svg") center/contain
+            no-repeat;
+        }
+
+        .btn-next {
+          background: url("/assets/img/icons/arrow-right.svg") center/contain
+            no-repeat;
         }
       }
     }

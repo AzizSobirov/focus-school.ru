@@ -1,0 +1,193 @@
+---
+import { Section, H2, H4, Image, Icon } from "ui";
+---
+
+<!-- Steps -->
+<Section name="steps">
+  <H2>ШАГИ НА ПУТИ К ПРАВАМ</H2>
+
+  <div class="steps__list">
+    <div class="steps__item">
+      <div class="steps__item-img">
+        <span>01</span>
+        <Icon src="open-book.svg" />
+      </div>
+      <div class="group">
+        <H4>Теоретический курс</H4>
+        <p>
+          Курс строится в виде лекционных занятий. Опытные преподаватели
+          рассказывают об основных тонкостях и нюансах управления и строения
+          транспортного средства, ПДД, основах поведения участника движения на
+          дороге, способах оказания первой мед.помощи. Также, освещаются
+          вопросы, которые войдут в тест экзамена в ГИБДД.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps__item">
+      <div class="steps__item-img">
+        <span>02</span>
+        <Icon src="steering-wheel-primary.svg" />
+      </div>
+      <div class="group">
+        <H4>Вождение автомобиля </H4>
+        <p>
+          В практическую часть обучения входит отработка основных навыков
+          вождения на автодроме, выполнение упражнений. Затем опытный инструктор
+          научит вас чувствовать автомобиль, грамотно управлять им в любой
+          ситуации, маневрировать в транспортном потоке, а также поможет освоить
+          все правила дорожного движения в условиях интенсивного городского
+          движения.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps__item">
+      <div class="steps__item-img">
+        <span>03</span>
+        <Icon src="survey.svg" />
+      </div>
+      <div class="group">
+        <H4>Внутренний экзамен </H4>
+        <p>
+          Внутренний экзамен состоит из двух частей – теоретической и
+          практической. Экзамен в автошколе позволяет: оценить теоретические и
+          практические знания правил дорожного движения и строения автомобиля,
+          «отрепетировать» грядущий заключительный экзамен в ГИБДД.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps__item">
+      <div class="steps__item-img">
+        <span>04</span>
+        <Icon src="policeman.svg" />
+      </div>
+      <div class="group">
+        <H4>Экзамен в ГИБДД </H4>
+        <p>
+          Автошкола готовит кандидата в водители к итоговому тестированию в ГАИ,
+          предоставляет в инспекцию его документы, договаривается о сроках сдачи
+          для каждой группы. Экзамен в ГИБДД так же, как и внутренний, состоит
+          из двух частей – теоретической, включающей в себя вопросы на знание
+          ПДД, и практической. Прохождение первой допускает начинающего водителя
+          до второй.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps__item">
+      <div class="steps__item-img">
+        <span>05</span>
+        <Icon src="prava.svg" />
+      </div>
+      <div class="group">
+        <H4>Получение водительского удостоверения</H4>
+        <p>
+          После успешной сдачи экзамена вы приходите в ГАИ за водительским
+          удостоверением. В нем фото владельца, его данные и категория. Заветную
+          карточку водитель в обязательном порядке должен иметь при себе, садясь
+          за руль транспортного средства.
+        </p>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .steps {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: rem(64) rem(20);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__item {
+      min-height: rem(190);
+      max-width: rem(760);
+      flex: 1 0 rem(480);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: rem(20);
+
+      @include media("sm") {
+        flex-basis: 100%;
+        flex-direction: column;
+        gap: rem(10);
+      }
+
+      &-img {
+        position: relative;
+        min-height: rem(190);
+        height: 100%;
+        min-width: rem(190);
+        width: rem(190);
+
+        @include media("sm") {
+          min-height: auto;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: rem(10);
+        }
+
+        span {
+          color: #ebebeb;
+          font-size: rem(96);
+          font-weight: 700;
+          font-family: var(--font-secondary);
+
+          @include media("sm") {
+            font-size: rem(64);
+          }
+        }
+
+        .icon {
+          position: absolute;
+          right: 0;
+          bottom: rem(10);
+          --icon-size: #{rem(95)};
+
+          @include media("sm") {
+            position: relative;
+            bottom: 0;
+            --icon-size: #{rem(70)};
+          }
+        }
+      }
+
+      .group {
+        gap: rem(16);
+      }
+
+      .text-h4 {
+        font-family: var(--font-secondary);
+        text-transform: unset;
+      }
+    }
+  }
+</style>

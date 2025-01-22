@@ -1,5 +1,11 @@
 ---
 import { Section, H2, H4, Image, Icon } from "ui";
+
+interface Props {
+  dir: "ltr" | "rtl";
+}
+
+const { dir = "ltr" } = Astro.props;
 ---
 
 <!-- Learn -->
@@ -92,7 +98,7 @@ import { Section, H2, H4, Image, Icon } from "ui";
     </div>
   </div>
 
-  <div class="learn__line">
+  <div class="learn__line" dir={dir}>
     <Image src="learn-cones.svg" />
 
     <Icon src="cone.svg" />
@@ -277,6 +283,15 @@ import { Section, H2, H4, Image, Icon } from "ui";
         box-shadow: -4px 6px 13px 0 rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         --icon-size: #{rem(50)};
+      }
+
+      &[dir="rtl"] {
+        margin-left: 0;
+
+        & > img {
+          left: auto;
+          right: 0;
+        }
       }
     }
   }

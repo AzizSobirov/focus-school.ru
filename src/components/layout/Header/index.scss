@@ -15,7 +15,7 @@
   }
 
   @include media("xl") {
-    position: static;
+    position: relative;
     padding: rem(25) 0;
     height: auto;
     max-width: 100%;

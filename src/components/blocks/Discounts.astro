@@ -1,14 +1,306 @@
 ---
 import { Section, H2, Image, Icon } from "ui";
+
+interface Props {
+  isMain?: boolean;
+}
+
+const { isMain } = Astro.props;
 ---
 
-<!-- Hero -->
-<Section name="hero pt-0"> .hero </Section>
+<!-- Discounts -->
+<Section name="discounts">
+  <H2>НАШИ АКЦИИ</H2>
+
+  {
+    !isMain ? (
+      <div class="discounts__list">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <div class="discounts__item">
+            <div class="bg-img">
+              <Image src="discount.png" />
+            </div>
+
+            <div class="discounts__item-date">до 31.12.2024</div>
+
+            <div class="group">
+              <H2>АКЦИЯ</H2>
+              <p class="text-p">
+                Описание акции на пару предложений. При клике на акцию <br />
+                всплывающее окно с заявкой
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <>
+        <div class="discounts__swiper">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <div class="swiper-slide">
+                  <div class="discounts__item">
+                    <div class="bg-img">
+                      <Image src="discount.png" />
+                    </div>
+
+                    <div class="discounts__item-date">до 31.12.2024</div>
+
+                    <div class="group">
+                      <H2>АКЦИЯ</H2>
+                      <p class="text-p">
+                        Описание акции на пару предложений. При клике на акцию
+                        <br />
+                        всплывающее окно с заявкой
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="discounts__swiper-nav">
+            <div class="swiper-btn btn-prev" />
+            <div class="swiper-btn btn-next" />
+          </div>
+        </div>
+
+        <div class="discounts__line">
+          <Image src="learn-cones.svg" />
+
+          <Icon src="cone.svg" />
+          <Icon src="cone.svg" />
+          <Icon src="cone.svg" />
+          <Icon src="cone.svg" />
+        </div>
+      </>
+    )
+  }
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
-  .hero {
-    position: relative;
+  .discounts {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(36);
+
+      @include media("lg") {
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(36) rem(20);
+
+      @include media("lg") {
+        gap: rem(20);
+      }
+      @include media("md") {
+        grid-template-columns: 1fr;
+      }
+      @include media("xs") {
+        gap: rem(15);
+      }
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(20) rem(35);
+      min-height: rem(310);
+      color: #fff;
+      border-radius: rem(20);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(20);
+
+      .bg-img::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #1ba8c5 0%, #43b6cd 100%);
+        opacity: 0.8;
+      }
+
+      @include media(rem(769), min-width) {
+        &:nth-child(1) {
+          grid-column-start: span 2;
+        }
+
+        &:nth-child(2),
+        &:nth-child(5) {
+          .bg-img::before {
+            background: linear-gradient(180deg, #ef623f 0%, #fd643f 100%);
+          }
+        }
+      }
+      @include media("md") {
+        padding: rem(20);
+        min-height: rem(220);
+
+        &:nth-child(even) {
+          .bg-img::before {
+            background: linear-gradient(180deg, #ef623f 0%, #fd643f 100%);
+          }
+        }
+
+        .text-p br {
+          display: none;
+        }
+      }
+
+      &-date {
+        margin-left: auto;
+        font-weight: 300;
+      }
+
+      .text-h2 {
+        color: #fff;
+      }
+
+      .group {
+        margin-top: auto;
+        gap: rem(12);
+      }
+    }
+
+    &__swiper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      .swiper {
+        height: rem(320);
+        width: 100%;
+        overflow: visible;
+
+        @include media("lg") {
+          height: rem(240);
+        }
+      }
+
+      .swiper-slide {
+        height: 100%;
+        opacity: 0.6;
+
+        @include media("sm") {
+          max-width: rem(320);
+        }
+        @include media("375px") {
+          max-width: rem(300);
+        }
+
+        &-active,
+        &-next {
+          opacity: 1;
+        }
+
+        &.visibility-hidden {
+          visibility: hidden;
+        }
+
+        .discounts__item {
+          min-height: auto !important;
+          height: 100%;
+
+          &:nth-child(1) {
+            --primary: #43b6cd;
+
+            .bg-img::before {
+              background: linear-gradient(180deg, #1ba8c5 0%, #43b6cd 100%);
+            }
+          }
+        }
+
+        &:nth-child(2) .discounts__item {
+          --primary: #fd643f;
+
+          .bg-img::before {
+            background: linear-gradient(180deg, #ef623f 0%, #fd643f 100%);
+          }
+        }
+      }
+
+      &-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(40);
+
+        @include media("sm") {
+          width: 100%;
+          justify-content: center;
+          gap: rem(25);
+        }
+
+        .swiper-btn {
+          width: rem(40);
+          height: rem(40);
+
+          &.swiper-button-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+        }
+
+        .btn-prev {
+          background: url("/assets/img/icons/arrow-left.svg") center/contain
+            no-repeat;
+        }
+
+        .btn-next {
+          background: url("/assets/img/icons/arrow-right.svg") center/contain
+            no-repeat;
+        }
+      }
+    }
+
+    &__line {
+      position: relative;
+      margin-top: rem(20);
+      margin-left: auto;
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(10);
+
+      @include media("sm") {
+        display: none;
+      }
+
+      & > img {
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        min-width: rem(1200);
+        height: auto;
+      }
+
+      .icon {
+        box-shadow: -4px 6px 13px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        --icon-size: #{rem(50)};
+      }
+    }
   }
 </style>

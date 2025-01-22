@@ -3,12 +3,170 @@ import { Section, H2, Image, Icon } from "ui";
 ---
 
 <!-- Train -->
-<Section name="train pt-0"> .train </Section>
+<Section name="train">
+  <H2>ОБУЧАЕМ</H2>
+
+  <ul class="train__list">
+    <li class="train__item">
+      <div class="line-1">
+        <Icon src="cone.svg" />
+      </div>
+
+      от<span> 40</span>
+      <br /> тысяч руб.
+    </li>
+    <li class="train__item">
+      <div class="line-2">
+        <Icon src="cone.svg" />
+      </div>
+
+      <span>2,5-3</span>
+      <br /> месяца
+    </li>
+    <li class="train__item">
+      <span>80%</span>
+      <br />
+      сдают с первого раза
+    </li>
+  </ul>
+
+  <div class="train__img">
+    <Image src="car-right.png" />
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .train {
+    margin: rem(170) 0;
     position: relative;
+
+    @include media("lg") {
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        align-items: center;
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      padding-left: rem(110);
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      gap: rem(70);
+
+      @include media("xl") {
+      }
+      @include media("lg") {
+        padding-left: 0;
+        justify-content: space-between;
+        gap: rem(30);
+      }
+      @include media("sm") {
+        flex-wrap: wrap;
+      }
+    }
+
+    &__item {
+      position: relative;
+      font-size: rem(20);
+      font-weight: 700;
+
+      &:nth-child(2) {
+        text-align: center;
+      }
+
+      @include media("sm") {
+        flex: 1 0 120px;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      span {
+        font-size: rem(56);
+        font-weight: 600;
+        font-family: var(--font-secondary);
+
+        @include media("lg") {
+          font-size: rem(48);
+        }
+        @include media("sm") {
+          font-size: rem(36);
+        }
+      }
+    }
+
+    .line-1,
+    .line-2 {
+      position: absolute;
+      border-right: 9px dashed #ededed;
+
+      @include media("lg") {
+        display: none;
+      }
+
+      .icon {
+        position: absolute;
+        left: -#{rem(20)};
+        box-shadow: -4px 6px 13px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        --icon-size: #{rem(50)};
+      }
+    }
+
+    .line-1 {
+      right: -#{rem(38)};
+      bottom: 0;
+      height: rem(310);
+
+      .icon {
+        top: 0;
+        transform: translateY(-50%);
+      }
+    }
+
+    .line-2 {
+      right: -#{rem(38)};
+      top: -#{rem(20)};
+      height: rem(215);
+      border-right: 9px dashed #ededed;
+
+      .icon {
+        bottom: 0;
+        transform: translateY(100%);
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(calc(-50% + rem(580)), -30%);
+      pointer-events: none;
+
+      @include media("xl") {
+        left: 60%;
+      }
+      @include media("lg") {
+        display: none;
+      }
+
+      img {
+        width: auto;
+        max-width: rem(1020);
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
   }
 </style>

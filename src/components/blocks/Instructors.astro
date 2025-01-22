@@ -1,0 +1,165 @@
+---
+import { Section, H2, H3, Image, Icon } from "ui";
+---
+
+<!-- Instructors -->
+<Section name="instructors">
+  <H2>НАШИ ИНСТРУКТОРЫ</H2>
+
+  <div class="instructors__swiper">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 5 }).map((_, index) => (
+            <div class="swiper-slide">
+              <div class="bg-img">
+                <Image src="poster-2.png" />
+              </div>
+
+              <div class="group">
+                <H3>ИНСТРУКТОР</H3>
+                <p class="text-p">
+                  Бывший сотрудник ГИБДД, стаж за рулем 35 лет, характер
+                  нордический, холост.
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="instructors__swiper-nav">
+      <div class="swiper-btn btn-prev"></div>
+      <div class="swiper-btn btn-next"></div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .instructors {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__swiper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      .swiper {
+        width: 100%;
+        height: rem(540);
+
+        @include media("xl") {
+          height: rem(450);
+        }
+        @include media("lg") {
+          overflow: visible;
+        }
+        @include media("sm") {
+          height: rem(400);
+        }
+      }
+
+      .swiper-slide {
+        position: relative;
+        padding: rem(20) rem(30);
+        width: 100%;
+        color: #fff;
+        border-radius: rem(20);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include media("lg") {
+          width: rem(320);
+        }
+        @include media("sm") {
+          padding: rem(20);
+        }
+      }
+
+      .bg-img {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0) 0%,
+            #43b6cd 100%
+          );
+        }
+      }
+
+      .group {
+        margin-top: auto;
+        gap: rem(16);
+
+        @include media("xs") {
+          gap: rem(12);
+        }
+      }
+
+      .text-h3 {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      &-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(40);
+
+        @include media("sm") {
+          width: 100%;
+          justify-content: center;
+          gap: rem(25);
+        }
+
+        .swiper-btn {
+          width: rem(40);
+          height: rem(40);
+
+          &.swiper-button-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+          }
+        }
+
+        .btn-prev {
+          background: url("/assets/img/icons/arrow-left.svg") center/contain
+            no-repeat;
+        }
+
+        .btn-next {
+          background: url("/assets/img/icons/arrow-right.svg") center/contain
+            no-repeat;
+        }
+      }
+    }
+  }
+</style>
