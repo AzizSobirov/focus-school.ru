@@ -4,59 +4,64 @@ import { Section, H2, Image, Icon } from "ui";
 interface Props {
   title: string;
   list: any[];
+  isMain?: boolean;
 }
 
-const { title, list } = Astro.props;
+const { title, list, isMain } = Astro.props;
 ---
 
 <!-- Tariffs -->
 <Section name="tariffs">
   <H2>{title}</H2>
 
-  <div class="tariffs__list">
-    {
-      list.map((item) => (
-        <div class="card">
-          <div class="bg-img">
-            <Image src="discount.png" />
-          </div>
-
-          {item.highlight && <div class="card__highlight">ХИТ</div>}
-
-          <div class="text-p">ТАРИФ</div>
-
-          <H2>{item.name}</H2>
-
-          <p class="text-p" set:html={item.description} />
-
-          {item.additional.length ? (
-            <div class="card__list">
-              <div class="card__list-title">ДОПОЛНИТЕЛЬНО</div>
-              <ul>
-                {item.additional.map((li: string) => (
-                  <li>{li}</li>
-                ))}
-              </ul>
+  {
+    !isMain ? (
+      <div class="tariffs__list">
+        {list.map((item) => (
+          <div class="card">
+            <div class="bg-img">
+              <Image src="discount.png" />
             </div>
-          ) : (
-            <div class="card__list">
-              <div class="card__list-title">ВХОДИТ</div>
-              <ul>
-                {item.includes.map((li: string) => (
-                  <li>{li}</li>
-                ))}
-              </ul>
-            </div>
-          )}
 
-          <div class="card__price">
-            <div class="card__price-old">{item.old_price}</div>
-            <div class="card__price-new">{item.new_price}</div>
+            {item.highlight && <div class="card__highlight">ХИТ</div>}
+
+            <div class="text-p">ТАРИФ</div>
+
+            <H2>{item.name}</H2>
+
+            <p class="text-p" set:html={item.description} />
+
+            {item.additional.length ? (
+              <div class="card__list">
+                <div class="card__list-title">ДОПОЛНИТЕЛЬНО</div>
+                <ul>
+                  {item.additional.map((li: string) => (
+                    <li>{li}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <div class="card__list">
+                <div class="card__list-title">ВХОДИТ</div>
+                <ul>
+                  {item.includes.map((li: string) => (
+                    <li>{li}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div class="card__price">
+              <div class="card__price-old">{item.old_price}</div>
+              <div class="card__price-new">{item.new_price}</div>
+            </div>
           </div>
-        </div>
-      ))
-    }
-  </div>
+        ))}
+      </div>
+    ) : (
+      <h2>tariflar</h2>
+    )
+  }
 </Section>
 
 <style lang="scss" is:global>

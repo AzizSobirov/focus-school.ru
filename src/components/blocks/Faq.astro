@@ -1,0 +1,212 @@
+---
+import { Section, H2, Image, Icon, Accordion } from "ui";
+---
+
+<!-- Faq -->
+<Section name="faq">
+  <div class="faq__line">
+    <Image src="learn-cones.svg" />
+
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+  </div>
+
+  <div class="faq__img">
+    <Image src="stop.png" />
+  </div>
+
+  <H2>ОТВЕТЫ НА ВАШИ ВОПРОСЫ</H2>
+
+  <div class="wrapper">
+    <div class="faq__list" data-accordion>
+      {
+        Array.from({ length: 7 }).map((_, index) => (
+          <Accordion title="Сколько длится обучение  в автошколе?">
+            Обучение в автошколе занимает до 3 месяцев, сдача экзамена в ГИБДД
+            проходит вне этих сроков
+          </Accordion>
+        ))
+      }
+    </div>
+
+    <div class="faq__socials">
+      <div class="faq__socials-img">
+        <Image src="questions.png" />
+      </div>
+
+      <p class="text-p">
+        Не нашли ответа на интересующий Вас вопрос? Позвоните нам или напишите в
+        мессенджеры, наши менеджеры с радостью ответят на все Ваши вопросы.
+      </p>
+      <div class="faq__socials-list">
+        <a href="#" target="_blank" class="icon">
+          <Image src="icons/phone-white.svg" />
+        </a>
+        <a href="#" target="_blank" class="icon">
+          <Image src="icons/vk-white.svg" />
+        </a>
+        <a href="#" target="_blank" class="icon">
+          <Image src="icons/whatsapp-white.svg" />
+        </a>
+        <a href="#" target="_blank" class="icon">
+          <Image src="icons/telegram-white.svg" />
+        </a>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .faq {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__line {
+      position: relative;
+      margin-top: rem(20);
+      margin-bottom: rem(80);
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(10);
+
+      @include media("sm") {
+        display: none;
+      }
+
+      & > img {
+        position: absolute;
+        right: 0;
+        z-index: -1;
+        min-width: rem(1200);
+        height: auto;
+      }
+
+      .icon {
+        box-shadow: -4px 6px 13px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        --icon-size: #{rem(50)};
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(calc(-50% + rem(540)), rem(-90));
+
+      @include media("lg") {
+        display: none;
+      }
+    }
+
+    .wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(20);
+
+      @include media("lg") {
+        flex-direction: column;
+      }
+    }
+
+    &__list {
+      width: 100%;
+      max-width: rem(610);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(25);
+
+      @include media("xl") {
+        max-width: rem(580);
+      }
+      @include media("lg") {
+        max-width: 100%;
+      }
+      @include media("sm") {
+        gap: rem(15);
+      }
+    }
+
+    &__socials {
+      margin-top: auto;
+      padding: rem(40) rem(50);
+      width: 100%;
+      max-width: rem(400);
+      color: #fff;
+      text-align: center;
+      background: var(--primary);
+      border-radius: rem(25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(32);
+
+      @include media("xl") {
+        padding: rem(40) rem(30);
+        max-width: rem(360);
+      }
+      @include media("lg") {
+        margin-top: rem(100);
+        max-width: 100%;
+      }
+      @include media("sm") {
+        gap: rem(20);
+      }
+      @include media("xs") {
+        margin-top: rem(60);
+      }
+
+      &-img {
+        position: relative;
+        height: rem(50);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          position: absolute;
+          bottom: 0;
+          transform: translateY(20%);
+          width: rem(260);
+          height: auto;
+
+          @include media("xs") {
+            width: rem(220);
+          }
+        }
+      }
+
+      &-list {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(20);
+      }
+
+      .icon {
+        --icon-size: #{rem(38)};
+      }
+    }
+  }
+</style>

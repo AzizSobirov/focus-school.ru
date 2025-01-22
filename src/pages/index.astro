@@ -1,12 +1,45 @@
 ---
 import App from "@/App.astro";
 import { Section, Image, Icon, H1, H2, H3, H4 } from "ui";
-import { Hero } from "@/components/Home";
+import {
+  Hero,
+  Train,
+  Focus,
+  Tariff,
+  Form,
+  Advantages,
+  Discounts,
+  Reviews,
+  Rating,
+  Video,
+  Learn,
+  Cars,
+  Steps,
+  Faq,
+  About,
+  Branches,
+} from "blocks";
+
+import { tariffs } from "store";
 ---
 
 <App title="Главная">
   <main>
-    <!-- Hero -->
     <Hero />
+    <Train />
+    <Focus />
+    <Tariff title="ТАРИФЫ ОБУЧЕНИЯ" list={tariffs} isMain />
+    <Form />
+    <Advantages />
+    <Discounts />
+    <Reviews />
+    <Rating />
+    <Video />
+    <Learn />
+    <Cars />
+    <Steps />
+    <Faq />
+    <About />
+    <Branches />
   </main>
 </App>

@@ -6,7 +6,8 @@
       "@/*": ["src/*"],
       "store": ["src/store.ts"],
       "scss/helpers": ["src/assets/scss/helpers"],
-      "ui": ["src/components/ui/index.ts"]
+      "ui": ["src/components/ui/index.ts"],
+      "blocks": ["src/components/blocks/index.ts"]
     }
   }
 }
