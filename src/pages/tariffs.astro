@@ -1,0 +1,27 @@
+---
+import App from "../App.astro";
+import { Section, H2, H3, H4, Image, Icon } from "ui";
+import {
+  Tariff,
+  Form,
+  Learn,
+  Reviews,
+  Rating,
+  Faq,
+  Branches,
+} from "@/components/Home";
+import { tariffs, tariffs2 } from "@/store";
+---
+
+<App title="Тарифы">
+  <main>
+    <Tariff title="ТАРИФЫ ОБУЧЕНИЯ - МКПП" list={tariffs} />
+    <Tariff title="ТАРИФЫ ОБУЧЕНИЯ - АКПП" list={tariffs2} />
+    <Form />
+    <Learn />
+    <Reviews />
+    <Rating />
+    <Faq />
+    <Branches />
+  </main>
+</App>

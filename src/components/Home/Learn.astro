@@ -1,0 +1,283 @@
+---
+import { Section, H2, H4, Image, Icon } from "ui";
+---
+
+<!-- Learn -->
+<Section name="learn">
+  <H2>УЧИСЬ ДИСТАНЦИОННО</H2>
+
+  <p class="text-p">
+    Онлайн-обучение в автошколе "Focus" проходит через современный и удобный
+    портал, который позволяет ученикам осваивать необходимый материал в
+    комфортной обстановке дома. Лекции и занятия представлены в формате
+    видеороликов, что даёт возможность изучать их в любое удобное время.
+    Согласно статистике, 99,6% наших выпускников успешно сдают экзамены в ГИБДД
+    после прохождения курса, что подтверждает высокий уровень подготовки.
+  </p>
+
+  <div class="learn__types">
+    <div class="learn__types-item" role="button" data-modal="training-program">
+      <H4>Программа теоретической подготовки</H4>
+
+      <div class="icon">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="20" cy="20" r="19.5" stroke="#43B6CD"></circle>
+          <path
+            d="M26 15C26 14.7239 25.7761 14.5 25.5 14.5H21C20.7239 14.5 20.5 14.7239 20.5 15C20.5 15.2761 20.7239 15.5 21 15.5H25V19.5C25 19.7761 25.2239 20 25.5 20C25.7761 20 26 19.7761 26 19.5V15ZM15.3536 25.8536L25.8536 15.3536L25.1464 14.6464L14.6464 25.1464L15.3536 25.8536Z"
+            fill="#43B6CD"></path>
+        </svg>
+      </div>
+
+      <Image src="learn-1.png" />
+    </div>
+
+    <div class="learn__types-item" role="button" data-modal="practical-classes">
+      <H4>Программа теоретической подготовки</H4>
+
+      <div class="icon">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="20" cy="20" r="19.5" stroke="#43B6CD"></circle>
+          <path
+            d="M26 15C26 14.7239 25.7761 14.5 25.5 14.5H21C20.7239 14.5 20.5 14.7239 20.5 15C20.5 15.2761 20.7239 15.5 21 15.5H25V19.5C25 19.7761 25.2239 20 25.5 20C25.7761 20 26 19.7761 26 19.5V15ZM15.3536 25.8536L25.8536 15.3536L25.1464 14.6464L14.6464 25.1464L15.3536 25.8536Z"
+            fill="#43B6CD"></path>
+        </svg>
+      </div>
+
+      <Image src="learn-2.png" />
+    </div>
+  </div>
+
+  <div class="learn__footer">
+    <p>
+      Зарегистрироваться в автошколе "Focus" можно быстро и легко. Нет
+      необходимости ждать формирования новой группы – вы можете начать обучение
+      сразу. Мы предлагаем гибкий график занятий, чтобы вы могли выбрать удобное
+      время для начала.
+    </p>
+
+    <div
+      class="btn"
+      role="button"
+      aria-label="Записаться"
+      tabindex="0"
+      data-modal
+    >
+      <span>ЗАПИСЬ НА ОБУЧЕНИЕ</span>
+      <div class="icon">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="20" cy="20" r="19.5" stroke="white"></circle>
+          <path
+            d="M26 15C26 14.7239 25.7761 14.5 25.5 14.5H21C20.7239 14.5 20.5 14.7239 20.5 15C20.5 15.2761 20.7239 15.5 21 15.5H25V19.5C25 19.7761 25.2239 20 25.5 20C25.7761 20 26 19.7761 26 19.5V15ZM15.3536 25.8536L25.8536 15.3536L25.1464 14.6464L14.6464 25.1464L15.3536 25.8536Z"
+            fill="white"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="learn__line">
+    <Image src="learn-cones.svg" />
+
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+    <Icon src="cone.svg" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .learn {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__types {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(20);
+
+      @include media("md") {
+        grid-template-columns: 1fr;
+      }
+      @include media("sm") {
+        gap: rem(15);
+      }
+
+      &-item {
+        position: relative;
+        padding: rem(44) rem(150) rem(20) rem(35);
+        width: 100%;
+        min-height: rem(165);
+        border-radius: rem(70);
+        border: rem(1) solid var(--primary);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(12);
+
+        @include media("lg") {
+          padding: rem(25) rem(150) rem(20) rem(20);
+          min-height: auto;
+          border-radius: rem(40);
+        }
+        @include media("xs") {
+          padding: rem(20) rem(120) rem(20) rem(15);
+          border-radius: rem(30);
+        }
+      }
+
+      &-item > img {
+        position: absolute;
+        bottom: rem(5);
+        right: rem(10);
+        width: rem(150);
+
+        @include media("lg") {
+          width: rem(120);
+        }
+        @include media("md") {
+          bottom: 0;
+        }
+        @include media("sm") {
+          bottom: 50%;
+          transform: translateY(50%);
+        }
+      }
+
+      .text-h4 {
+        font-family: var(--font-secondary);
+        text-transform: unset;
+
+        @include media("lg") {
+          font-size: rem(18);
+        }
+        @include media("xs") {
+          font-size: rem(16);
+        }
+      }
+
+      .icon {
+        transition: var(--transition-ease);
+        --icon-size: #{rem(40)};
+      }
+
+      &-item:hover .icon {
+        transform: rotate(45deg);
+      }
+    }
+
+    &__footer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(25);
+
+      @include media("sm") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(20);
+      }
+
+      .btn {
+        padding: rem(16) rem(30);
+        color: #fff;
+        background: var(--primary);
+        border-radius: 9999px;
+        transition: var(--transition-ease);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(15);
+
+        @include media("md") {
+          padding: rem(12) rem(20);
+        }
+
+        span {
+          font-weight: 300;
+          white-space: nowrap;
+
+          @include media("md") {
+            font-size: rem(14);
+          }
+        }
+
+        .icon {
+          transition: var(--transition-ease);
+          --icon-size: #{rem(40)};
+
+          @include media("md") {
+            --icon-size: #{rem(32)};
+          }
+        }
+
+        &:hover {
+          opacity: 0.9;
+
+          .icon {
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+
+    &__line {
+      position: relative;
+      margin-top: rem(20);
+      margin-left: auto;
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(10);
+
+      @include media("sm") {
+        display: none;
+      }
+
+      & > img {
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        min-width: rem(1200);
+        height: auto;
+      }
+
+      .icon {
+        box-shadow: -4px 6px 13px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+        --icon-size: #{rem(50)};
+      }
+    }
+  }
+</style>
