@@ -88,12 +88,24 @@ modal.init();
 const header = document.querySelector(".header");
 if (header) {
   const menu = header.querySelector(".header__menu");
+  const menuLinks = menu.querySelectorAll(".menu-item");
   const services = header.querySelector(".menu-item-has-children");
   // const servicesSubMenu = services.querySelector(".sub-menu");
   const contacts = header.querySelector(".header__contact");
 
   window.addEventListener("scroll", () => {
     header.classList.toggle("sticky", window.scrollY > 0);
+  });
+
+  menuLinks.forEach((link) => {
+    const a = link.querySelector("a");
+    let url = new URL(a.href);
+
+    if (window.location.pathname == url.pathname) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
   });
 
   // const div = document.createElement("div");
